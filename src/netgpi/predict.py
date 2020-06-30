@@ -117,16 +117,16 @@ def make_prediction_graphs(test_data:pd.core.frame.DataFrame,
     """
     
     # scale for interval calculations (for prediction graphs)
-    schale = np.nan_to_num(st.sem(torch.softmax(all_outputs, 
-                                                dim=2), 
-                                  axis=0, 
-                                  nan_policy='omit'))
-    regbase_intervals = list(st.t.interval(0.95, 
-                                           all_outputs.shape[1]-1, 
-                                           loc=probabilities, 
-                                           scale=schale))
-    regbase_intervals[0] = np.nan_to_num(regbase_intervals[0])
-    regbase_intervals[1] = np.nan_to_num(regbase_intervals[1])
+    # schale = np.nan_to_num(st.sem(torch.softmax(all_outputs, 
+    #                                             dim=2), 
+    #                               axis=0, 
+    #                               nan_policy='omit'))
+    # regbase_intervals = list(st.t.interval(0.95, 
+    #                                        all_outputs.shape[1]-1, 
+    #                                        loc=probabilities, 
+    #                                        scale=schale))
+    # regbase_intervals[0] = np.nan_to_num(regbase_intervals[0])
+    # regbase_intervals[1] = np.nan_to_num(regbase_intervals[1])
 
     bluest = cm.Blues(np.linspace(.9, .9, 1))[0]
     blues = cm.Blues(np.linspace(.55, .3, 5))

@@ -208,6 +208,10 @@ def fetch_data(fetching: str='train_val', file_type: str='jjaa-style', kingdom_o
         """ Helper function for fasta parsing. Call this after all sequence
             parts have been concatenated.
         """
+        ## If no identifier, then we ignore
+        ## TODO: inform of a failed entry?
+        if 'name' not in row:
+            return
         same_but_longer = make_input_101(' '.join(row['sequence'][-100:])) 
         encoded_aminos = list(encode_aminos(same_but_longer))
         row['aa_string'] = same_but_longer
